@@ -1,9 +1,17 @@
 const { Schema, model } = require('../index')
 
 const UserSchema = model('User', new Schema({
-  username: String,
-  email: String,
-  password: String
+  username: {
+    type: String,
+    required: true
+  }, password: {
+    type: String,
+    required: true
+  }, email: {
+    type: String,
+    required: true
+  },
+  files: Array
 }, {
   timestamps: {
     createdAt: true,
