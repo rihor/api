@@ -4,7 +4,12 @@ const PostSchema = model('Post', new Schema({
   _id: String,
   name: String,
   size: Number,
-  url: String
+  url: String,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 }, {
   timestamps: {
     createdAt: true,
