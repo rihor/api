@@ -1,6 +1,5 @@
 const { Router } = require('express')
 const { hash, compare } = require('bcrypt')
-const { v4: uuidv4 } = require('uuid')
 const { sign } = require('jsonwebtoken')
 
 const { secret, expiresIn } = require('../config/auth')
@@ -34,7 +33,7 @@ authRoutes.post('/register', async (req, res) => {
 
     // Deleting the used invitation and creating a new one for the user
     await InviteSchema.findByIdAndDelete(invite)
-    await InviteSchema.create({ _id: uuidv4(), whoose: username })
+    await InviteSchema.create({ whoose: username })
 
     // Making the password not appear in the response object
     user.password = undefined
