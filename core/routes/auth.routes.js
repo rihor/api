@@ -33,7 +33,7 @@ authRoutes.post('/register', async (req, res) => {
 
     // Deleting the used invitation and creating a new one for the user
     await InviteSchema.findByIdAndDelete(invite)
-    await InviteSchema.create({ whoose: username })
+    await InviteSchema.create({ whose: username })
 
     // Making the password not appear in the response object
     user.password = undefined
